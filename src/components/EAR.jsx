@@ -279,4 +279,4 @@ function EAR3() {
   );
 }
 
-export default EAR3;
+export default EAR1;
