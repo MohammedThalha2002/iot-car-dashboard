@@ -172,6 +172,15 @@ function EAR2() {
           {"EYE ASPECT RATIO"}
         </tspan>
       </text>
+      <rect
+        width={1318}
+        height={668}
+        x={11}
+        y={9}
+        stroke="#01EBD4"
+        strokeWidth={18}
+        rx={214}
+      />
     </>
   );
 }
@@ -257,8 +266,17 @@ function EAR3() {
           {"EYE ASPECT RATIO"}
         </tspan>
       </text>
+      <rect
+        width={1318}
+        height={668}
+        x={11}
+        y={9}
+        stroke="#01EBD4"
+        strokeWidth={18}
+        rx={214}
+      />
     </>
   );
 }
 
-export default EAR2;
+export default EAR3;
