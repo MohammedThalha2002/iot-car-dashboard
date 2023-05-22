@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Acceleration() {
+function Acceleration({ acc }) {
+  useEffect(() => console.log(acc), []);
   return (
     <>
       {/* LOW */}

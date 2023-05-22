@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-function Brake() {
+function Brake({brake}) {
+  useEffect(() => console.log(brake), []);
   return (
     <>
       {/* LOW */}

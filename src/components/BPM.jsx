@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function BPM() {
+function BPM({ bpm }) {
+  useEffect(() => console.log(bpm), []);
   return (
     <>
       <g filter="url(#n)">
@@ -24,7 +25,7 @@ function BPM() {
         }}
       >
         <tspan x={291.343} y={356.651}>
-          {75}
+          {bpm}
         </tspan>
       </text>
       <text

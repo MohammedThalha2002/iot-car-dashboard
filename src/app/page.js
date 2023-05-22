@@ -1,11 +1,34 @@
+"use client";
+import { useEffect, useState } from "react";
 import DateTime from "@/components/DateTime";
 import Acceleration from "@/components/Acceleration";
 import Brake from "@/components/Brake";
 import BPM from "@/components/BPM";
 import EAR from "@/components/EAR";
 import SeatBelt from "@/components/SeatBelt";
+import { db } from "@/firebase/config";
+import { onValue, ref } from "firebase/database";
 
 export default function Home() {
+  const [data, setData] = useState({
+    acceleration: "low",
+    bpm: 75,
+    brake: "med",
+    ear: 1,
+    seatbelt: true,
+  });
+
+  useEffect(() => {
+    const query = ref(db, "sensor-values");
+    return onValue(query, (snapshot) => {
+      if (snapshot.exists()) {
+        const val = snapshot.val();
+        console.log(val);
+        setData(val);
+      }
+    });
+  }, []);
+
   return (
     <main className="bg-black h-screen w-screen flex justify-center items-center">
       <svg
@@ -69,7 +92,6 @@ export default function Home() {
               </tspan>
             </text>
           </g>
-          {/* ICON */}
           <g fill="#32D74B">
             <path d="m93.895 214.604-8.992 2.248a1.44 1.44 0 0 0 .698 2.792l8.352-2.089a33.028 33.028 0 0 1-.045-.886v-.018l-.021-.844v-.873l.008-.33ZM94.066 218.877l-9.163 2.291a1.44 1.44 0 0 0 .698 2.792l8.932-2.233a24.977 24.977 0 0 1-.467-2.85ZM95.333 224.316l-10.43 2.608a1.438 1.438 0 1 0 .698 2.791l11.302-2.825c-.639-.687-1.135-1.551-1.51-2.429a9.72 9.72 0 0 1-.06-.145ZM96.89 203.865a1.433 1.433 0 0 0-.477.038l-11.51 2.877a1.44 1.44 0 0 0 .698 2.792l9.436-2.359c.111-.325.23-.637.357-.934.371-.872.863-1.729 1.495-2.414ZM94.3 210.186l-9.397 2.349a1.44 1.44 0 0 0 .698 2.792l8.349-2.087a28.52 28.52 0 0 1 .35-3.054Z" />
             <path
@@ -81,15 +103,15 @@ export default function Home() {
           {/* DATETIME */}
           <DateTime />
           {/* ACCELARATION LEVELS */}
-          <Acceleration />
+          <Acceleration acc={data.acceleration} />
           {/* BRAKE LEVELS */}
-          <Brake />
+          <Brake brake={data.brake} />
           {/* SEATBELT */}
-          <SeatBelt />
+          <SeatBelt seatbelt={data.seatbelt} />
           {/* BPM VALUE */}
-          <BPM />
+          <BPM bpm={data.bpm} />
           {/* EYE ASPECT RATIO */}
-          <EAR />
+          <EAR ear={data.ear} />
         </g>
         <defs>
           <filter
