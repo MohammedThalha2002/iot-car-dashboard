@@ -1,25 +1,51 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 
-function Brake({brake}) {
-  useEffect(() => console.log(brake), []);
+function Brake({ brake }) {
+  const idle_color = "#317A3C";
+  const low_color = "#32D74B";
+  const med_color = "#D79F32";
+  const high_color = "#D73232";
+  const [low, setLow] = useState(idle_color);
+  const [med, setMed] = useState(idle_color);
+  const [high, setHigh] = useState(idle_color);
+  useEffect(() => {
+    console.log(brake);
+    if (brake == "idle") {
+      setLow(idle_color);
+      setMed(idle_color);
+      setHigh(idle_color);
+    } else if (brake == "low") {
+      setLow(low_color);
+      setMed(idle_color);
+      setHigh(idle_color);
+    } else if (brake == "med") {
+      setLow(low_color);
+      setMed(med_color);
+      setHigh(idle_color);
+    } else if (brake == "high") {
+      setLow(low_color);
+      setMed(med_color);
+      setHigh(high_color);
+    }
+  }, [brake]);
   return (
     <>
       {/* LOW */}
       <g filter="url(#j)">
-        <path fill="#32D74B" d="M842 628.266v-23.835h47.67v23.835z" />
+        <path fill={low} d="M842 628.266v-23.835h47.67v23.835z" />
       </g>
       <g filter="url(#k)">
-        <path fill="#32D74B" d="M892.852 628.266v-23.835h47.67v23.835z" />
+        <path fill={low} d="M892.852 628.266v-23.835h47.67v23.835z" />
       </g>
       <g filter="url(#l)">
-        <path fill="#32D74B" d="M943.688 628.266v-23.835h47.67v23.835z" />
+        <path fill={low} d="M943.688 628.266v-23.835h47.67v23.835z" />
       </g>
       {/* MED */}
-      <g fill="#D79F32">
+      <g fill={med}>
         <path d="M994.547 628.266v-23.835h47.67v23.835zM1045.39 628.266v-23.835h47.67v23.835z" />
       </g>
       {/* HIGH */}
-      <g fill="#D73232">
+      <g fill={high}>
         <path d="M1096.25 628.266v-23.835h47.67v23.835zM1147.09 628.266v-23.835h47.67v23.835z" />
       </g>
       <text

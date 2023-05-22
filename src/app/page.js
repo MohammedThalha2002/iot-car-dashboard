@@ -11,11 +11,11 @@ import { onValue, ref } from "firebase/database";
 
 export default function Home() {
   const [data, setData] = useState({
-    acceleration: "low",
-    bpm: 75,
-    brake: "med",
-    ear: 1,
-    seatbelt: true,
+    // acceleration: "low",
+    // bpm: 75,
+    // brake: "med",
+    // ear: 1,
+    // seatbelt: true,
   });
 
   useEffect(() => {

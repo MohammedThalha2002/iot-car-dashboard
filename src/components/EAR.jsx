@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 function EAR({ ear }) {
   useEffect(() => console.log(ear), []);
-  if (ear == 1) {
+  if (ear >= 0.3) {
     return (
       <>
         <path
@@ -91,7 +91,7 @@ function EAR({ ear }) {
         />
       </>
     );
-  } else if ((ear = 2)) {
+  } else if ((ear >= 0.2)) {
     return (
       <>
         <path
@@ -183,7 +183,7 @@ function EAR({ ear }) {
         />
       </>
     );
-  } else {
+  } else if (ear >=0.1) {
     return (
       <>
         <path

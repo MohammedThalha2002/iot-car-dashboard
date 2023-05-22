@@ -1,25 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function Acceleration({ acc }) {
-  useEffect(() => console.log(acc), []);
+  const idle_color = "#317A3C";
+  const low_color = "#32D74B";
+  const med_color = "#D79F32";
+  const high_color = "#D73232";
+  const [low, setLow] = useState(idle_color);
+  const [med, setMed] = useState(idle_color);
+  const [high, setHigh] = useState(idle_color);
+  useEffect(() => {
+    console.log(acc);
+    if (acc == "idle") {
+      setLow(idle_color);
+      setMed(idle_color);
+      setHigh(idle_color);
+    } else if (acc == "low") {
+      setLow(low_color);
+      setMed(idle_color);
+      setHigh(idle_color);
+    } else if (acc == "med") {
+      setLow(low_color);
+      setMed(med_color);
+      setHigh(idle_color);
+    } else if (acc == "high") {
+      setLow(low_color);
+      setMed(med_color);
+      setHigh(high_color);
+    }
+  }, [acc]);
   return (
     <>
       {/* LOW */}
       <g filter="url(#g)">
-        <path fill="#32D74B" d="M160.812 628.32v-23.835h47.67v23.835z" />
+        <path fill={low} d="M160.812 628.32v-23.835h47.67v23.835z" />
       </g>
       <g filter="url(#h)">
-        <path fill="#32D74B" d="M211.664 628.32v-23.835h47.67v23.835z" />
+        <path fill={low} d="M211.664 628.32v-23.835h47.67v23.835z" />
       </g>
       <g filter="url(#i)">
-        <path fill="#32D74B" d="M262.504 628.32v-23.835h47.67v23.835z" />
+        <path fill={low} d="M262.504 628.32v-23.835h47.67v23.835z" />
       </g>
       {/* MEDIUM */}
-      <g fill="#D79F32">
+      <g fill={med}>
         <path d="M313.359 628.32v-23.835h47.67v23.835zM364.203 628.32v-23.835h47.67v23.835z" />
       </g>
       {/* HIGH */}
-      <g fill="#D73232">
+      <g fill={high}>
         <path d="M415.059 628.32v-23.835h47.67v23.835zM465.906 628.32v-23.835h47.67v23.835z" />
       </g>
       <text
