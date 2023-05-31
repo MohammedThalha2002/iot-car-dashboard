@@ -183,7 +183,7 @@ function EAR({ ear }) {
         />
       </>
     );
-  } else if (ear >=0.1) {
+  } else if (ear >=0) {
     return (
       <>
         <path

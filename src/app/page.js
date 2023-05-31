@@ -30,11 +30,15 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black h-screen w-screen flex justify-center items-center">
+    <main className="bg-black h-screen w-screen px-4 flex justify-center items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={1339}
-        height={686}
+        // width={1339}
+        // height={686}
+        width="100%"
+        height="100%"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 1339 686"
         fill="none"
       >
         <g clipPath="url(#a)">
